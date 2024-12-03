@@ -20,7 +20,7 @@ vending_machine = ['게토레이', '게토레이', '레쓰비', '레쓰비', '�
 print("남은 음료수: ",vending_machine)
 
 user = input("사용자 종류를 입력하세요:\n1.소비자\n2.주인\n")
-if user == '1' or user == '사용자':
+if user == '1' or user == '소비자':
     drink=input("마시고 싶은 음료? ")
     if drink in vending_machine:   
         print(f"{drink} 드릴게요")
