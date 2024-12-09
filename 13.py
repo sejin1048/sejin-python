@@ -239,3 +239,173 @@ def solution(str1, str2):
 
 print(solution("abc","aabcc"))
 print(solution("tbt","tbbttb"))	
+
+#함수 안에 함수선언 가능 (중요!!) &호출도 가능!
+def b():
+    def c():
+        print("c")
+    c()
+
+b()
+
+#list를 문자로 바꾸려면 중요!!! <-문제에서 이용하는거 있을 것
+l = ["p","y","t","h","o","n"]
+print("".join(l))
+
+#if else 구문 자주씀!!
+print(1 if 1<0 else 0)
+print("abc" if 1<0 else "bcd")
+#같은거
+if 1<0:
+    print("abc")
+else:
+    print("bcd")
+
+a = 1 if 1<0 else 5
+print(a)
+
+#문제 4)
+def solution(arr, divisor):
+    answer = []
+    for i in arr:
+        if i % divisor == 0:
+            answer.append(i)
+            answer.sort()
+    if len(answer) == 0:
+        answer.append(-1)
+    return answer
+
+arr = [3, 2, 6]
+print(solution(arr,10))
+
+#문제 5)
+def solution(numbers):
+    answer = []
+    for i in range(len(numbers)):
+        for j in range(len(numbers)):
+            if i != j:
+                answer.append(numbers[i]+numbers[j])
+    answer = sorted(set(answer))
+    return answer
+
+# numbers = [2,1,3,4,1]
+numbers = [5,0,2,7]
+print(solution(numbers))
+
+# 문제 6번) 숙련자용!
+def solution(numlist, n):
+    answer = []
+    return answer
+a=[10000,20,36,47,40,6,10,7000]
+print(sorted(a))
+
+# 문제 7번)
+def solution(x):
+    n = sum(map(int,str(x)))
+    if x % n == 0: 
+        answer = True
+    else:
+        answer = False
+    return answer
+    
+print(solution(121))
+
+# 문제 8번)
+def solution(s):
+    a = list(s)
+    a.sort()
+    a.reverse()
+    answer = "".join(a)
+    return answer
+
+s="Zbcdefg"
+print(solution("Zbcdefg"))
+
+#문제 9번)숙련자용
+def solution(numlist, n):
+    answer = []
+    return answer
+
+
+# 문제 10번)
+# sol1)
+def solution(name, yearning, photo):
+    answer = []
+    for i in photo:
+        score = 0
+        for j in range(len(name)):
+            if name[j] in i:
+                score += yearning[j]
+        answer.append(score)
+        
+    return answer
+
+# sol2) dictionary사용해서
+def solution(name, yearning, photo):
+    answer = []
+    yearning_dict = {}
+    for i in range(len(name)):
+        yearning_dict[name[i]] = yearning[i]    
+    
+    for i in photo:
+        score = 0
+        for name in i:
+            if name in yearning_dict:
+                score += yearning_dict[name]
+        answer.append(score)
+        
+    return answer
+
+# print(solution(["may", "kein", "kain", "radi"],[5, 10, 1, 3], [["may", "kein", "kain", "radi"],["may", "kein", "brin", "deny"], ["kon", "kain", "may", "coni"]]))
+print(solution(["kali", "mari", "don"],[11, 1, 55],[["kali", "mari", "don"], ["pony", "tom", "teddy"], ["con", "mona", "don"]]))
+
+# zip
+a = [1,2,3,4]
+b = ["a", "b", "c", "d"]
+c = list(zip(a,b))
+print(c)
+d = dict(zip(a,b))
+print(d)
+
+# 문제 11번
+def solution(t, p):
+    answer = 0
+    return answer
+
+#문제 12번
+def solution(n):
+    answer = []
+    
+    def collat(x):
+        answer.append(x)
+        if x == 1:
+            return
+        elif x%2 == 0:
+            collat(x/2)
+        else:
+            collat(x*3+1)
+    collat(n)
+    return answer
+
+# 문제 숙련자용 2) 아직 안품
+def solution(babbling):
+    answer = 0
+    can = ["aya", "ye", "woo", "ma"]    
+        
+    return answer
+
+# 숙련자용 문제 3) 하노이
+def solution(n):
+    answer = []
+    def hanoi(n,f,t,v):
+        if n == 1:
+            answer.append([f,t])
+        else:
+            hanoi(n-1,f,v,t)
+            answer.append([f,t])
+            hanoi(n-1,v,t,f)
+    hanoi(n,1,3,2)
+    
+    return answer
+
+print(solution(2))
