@@ -287,4 +287,138 @@ employee = [
 ]
 for i in employee:
     print(i)
+
+#실습2 supermarket클래스
+class Supermarket:
+    count = 0
+    def __init__(self,location,name,product,customer):
+        self.location = location
+        self.name = name
+        self.product = product
+        self.customer = customer
+        Supermarket.count += 1
+    
+    def print_location(self):
+        print(f"location : {self.location}") 
+    
+    def change_category(self,product):
+        self.product = product
+        print(f"changed product : {self.product}")
         
+    def show_list(self):
+        print(f"now product : {self.product}")
+    
+    def enter_customer(self):
+        self.customer += 1
+        print(f"customer : {self.customer}")
+    
+    def show_info(self):
+        print(f"name : {self.name}, location : {self.location}, product : {self.product}, customer : {self.customer} ")
+    
+    def show_supermarket_count(self):
+        print(f"supermarket_count : {Supermarket.count}")
+    
+a = Supermarket("응암","홈플러스","냄비",150)
+a.show_info()
+a.print_location()
+a.change_category(["사탕","사과"])
+a.show_info()
+a.show_list()
+a.enter_customer() 
+a.enter_customer() 
+a.show_supermarket_count()
+a = Supermarket("응암","홈플러스","냄비",150)
+a.show_supermarket_count()
+
+#클래스 상속
+class Country:
+    def __init__(self):
+        self.name = "나라이름"
+        self.population = "인구"
+        self.captial = "수도"
+        
+    def show(self):
+        print("국가 클래스의 메소드입니다.")
+
+class Korea(Country):
+    def __init__(self,name):
+        self.name = name
+    
+    def show_name(self):
+        print("국가 이름은 : ",self.name)
+    
+country = Korea("대한민국")
+country.show()
+print(country.name)
+country.show_name()
+
+#매써드 오버라이딩! 
+class Country:
+    def __init__(self):
+        self.name = "나라이름"
+        self.population = "인구"
+        self.captial = "수도"
+        
+    def show(self):
+        print("국가 클래스의 메소드입니다.")
+
+class Korea(Country):
+    def __init__(self,name):
+        self.name = name
+    
+    def show(self):
+        print("국가 이름은 : ",self.name)
+    
+country = Korea("대한민국")
+country.show()
+print(country.name)
+# country.show_name()
+
+# 실습 3 MinLimitCalculator 클래스 만들기
+class Calculator():
+    def __init__(self):
+        self.value = 100
+        
+    def sub(self,value):
+        self.value -= value
+        
+class MinLimitCalculator(Calculator):
+    def sub(self,value):
+        self.value -= value
+        if self.value < 0 :
+            self.value = 0
+        else:
+            return self.value
+        # self.vaule = max(0, self.value-value) #같은 뜻! sol2)
+        # super().sub(value) sol3) super,sub가 부모꺼를 가져오는것!
+        # self.value = max(0,self.value)
+
+
+cal = MinLimitCalculator()
+cal.sub(20)
+cal.sub(90)
+print(cal.value)
+
+
+# 오버로딩 ->파이썬은 오버로딩이 안된다!
+class Calculator():
+    def __init__(self):
+        self.value = 100
+    
+    def sub(self,value):
+        self.value -= value
+    
+    #메소드 오버로딩 <-파이썬은 안됨! c언어는 됨
+    def sub(self):
+        self.value -= 10
+    
+    #메소드 오버로딩 <-파이썬은 안됨! c언어는 됨
+    def sub(self, value1, value2):
+        self.value = value1 - value2
+
+    def sub(self, *args): #요거는 가능! 변수 여러개 받고싶을때
+        self.value = args[0]
+        return self.value
+    
+a = Calculator()
+print(a.sub(10))
