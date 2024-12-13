@@ -18,6 +18,7 @@ print(c)
 print(b[-1])
 print(type(b))
 
+# 리스트 슬라이싱
 seasons = ["봄", "여름", "가을", "겨울"]
 print(seasons[0:1])
 print(seasons[0:2])
